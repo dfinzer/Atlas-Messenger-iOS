@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03EB7B291AA57313005B318B /* THMeemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B281AA57313005B318B /* THMeemCell.m */; };
+		03EB7B291AA57313005B318B /* THCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B281AA57313005B318B /* THCardCell.m */; };
 		03EB7B391AA57CFB005B318B /* NSMutableDictionary+THAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B341AA57CFB005B318B /* NSMutableDictionary+THAdditions.m */; };
 		03EB7B3A1AA57CFB005B318B /* UIView+THAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B361AA57CFB005B318B /* UIView+THAdditions.m */; };
 		03EB7B3B1AA57CFB005B318B /* UIButton+THAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B381AA57CFB005B318B /* UIButton+THAdditions.m */; };
@@ -101,8 +101,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03EB7B271AA57313005B318B /* THMeemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THMeemCell.h; sourceTree = "<group>"; };
-		03EB7B281AA57313005B318B /* THMeemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THMeemCell.m; sourceTree = "<group>"; };
+		03EB7B271AA57313005B318B /* THCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCardCell.h; sourceTree = "<group>"; };
+		03EB7B281AA57313005B318B /* THCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCardCell.m; sourceTree = "<group>"; };
 		03EB7B331AA57CFB005B318B /* NSMutableDictionary+THAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+THAdditions.h"; sourceTree = "<group>"; };
 		03EB7B341AA57CFB005B318B /* NSMutableDictionary+THAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+THAdditions.m"; sourceTree = "<group>"; };
 		03EB7B351AA57CFB005B318B /* UIView+THAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+THAdditions.h"; sourceTree = "<group>"; };
@@ -478,8 +478,8 @@
 				251D8DBD1A9688C40000BFA2 /* ATLMStyleValue1TableViewCell.m */,
 				251D8DBE1A9688C40000BFA2 /* ATLMOverlayView.h */,
 				251D8DBF1A9688C40000BFA2 /* ATLMOverlayView.m */,
-				03EB7B271AA57313005B318B /* THMeemCell.h */,
-				03EB7B281AA57313005B318B /* THMeemCell.m */,
+				03EB7B271AA57313005B318B /* THCardCell.h */,
+				03EB7B281AA57313005B318B /* THCardCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -774,7 +774,7 @@
 				251D8DC21A9688C50000BFA2 /* ATLMApplicationController.m in Sources */,
 				251D8DCA1A9688C50000BFA2 /* ATLMSettingsViewController.m in Sources */,
 				251D8DD21A9688C50000BFA2 /* ATLMLayerClient.m in Sources */,
-				03EB7B291AA57313005B318B /* THMeemCell.m in Sources */,
+				03EB7B291AA57313005B318B /* THCardCell.m in Sources */,
 				251D8DCE1A9688C50000BFA2 /* ATLMUser.m in Sources */,
 				251D8DCC1A9688C50000BFA2 /* ATLMRegistrationViewController.m in Sources */,
 				251D8DC31A9688C50000BFA2 /* ATLMConversationDetailViewController.m in Sources */,

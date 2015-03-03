@@ -8,8 +8,11 @@
 
 #import "THComposeViewController.h"
 #import "THCardView.h"
+#import "NSMutableDictionary+THAdditions.h"
 
 @interface THComposeViewController ()
+
+@property (nonatomic, strong, readwrite) THCardView *cardView;
 
 @end
 
@@ -19,23 +22,34 @@
     [super viewDidLoad];
     
     CGRect photoViewFrame = CGRectMake(5, 20, 310, 310);
-    THCardView *photoView = [[THCardView alloc] initWithFrame:photoViewFrame];
-    photoView.imageData = @{
+    self.cardView = [[THCardView alloc] initWithFrame:photoViewFrame];
+    self.cardView.imageData = @{
                             @"thumbnail_url": @"http://cdn2.blisstree.com/wp-content/uploads/2009/05/hug-your-cat-day.jpg",
                             @"image_url": @"http://cdn2.blisstree.com/wp-content/uploads/2009/05/hug-your-cat-day.jpg"
                             };
-    photoView.bottomText = @"OH HEY";
-    photoView.topText = @"OH HAI";
-    photoView.editable = YES;
-    [self.view addSubview:photoView];
+    self.cardView.bottomText = @"OH HEY";
+    self.cardView.topText = @"OH HAI";
+    self.cardView.editable = YES;
+    [self.view addSubview:self.cardView];
     
     // Send button.
     UIButton *sendButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [sendButton setTitle:@"LOGOUT" forState:UIControlStateNormal];
-    [sendButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchDown];
+    [sendButton setTitle:@"SEND" forState:UIControlStateNormal];
+    [sendButton addTarget:self action:@selector(send) forControlEvents:UIControlEventTouchDown];
     sendButton.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
     [sendButton sizeToFit];
     [self.view addSubview:sendButton];
+}
+
+- (void)send
+{
+    NSMutableDictionary *data = [NSMutableDictionary dictionary];
+    [data setObject:@"http://cdn2.blisstree.com/wp-content/uploads/2009/05/hug-your-cat-day.jpg" forKey:@"image_url"];
+    [data setObject:@"http://cdn2.blisstree.com/wp-content/uploads/2009/05/hug-your-cat-day.jpg" forKey:@"thumbnail_url"];
+    [data setObject:self.cardView.bottomText forKey:@"bottom_text"];
+    [data setObject:self.cardView.topText forKey:@"top_text"];
+    
+    [self.delegate composeViewController:self didSendMeem:data];
 }
 
 @end

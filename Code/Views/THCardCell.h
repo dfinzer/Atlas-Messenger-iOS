@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ATLMessagePresenting.h"
 
-@interface THMeemCell : UICollectionViewCell <ATLMessagePresenting>
+@interface THCardCell : UICollectionViewCell <ATLMessagePresenting>
 
 @end

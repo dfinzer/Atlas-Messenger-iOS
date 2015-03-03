@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class THComposeViewController;
+
+@protocol THComposeViewControllerDelegate <NSObject>
+
+- (void)composeViewController:(THComposeViewController *)composeViewController didSendMeem:(NSDictionary *)meem;
+
+@end
+
 @interface THComposeViewController : UIViewController
+
+@property (nonatomic, weak) NSObject<THComposeViewControllerDelegate> *delegate;
 
 @end

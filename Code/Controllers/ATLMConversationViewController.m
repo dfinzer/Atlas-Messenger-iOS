@@ -25,7 +25,7 @@
 #import "ATLMUtilities.h"
 #import "ATLMParticipantTableViewController.h"
 
-#import "THMeemCell.h"
+#import "THCardCell.h"
 #import "THComposeViewController.h"
 
 static NSDateFormatter *ATLMShortTimeFormatter()
@@ -127,7 +127,7 @@ static ATLMDateProximity ATLMProximityToDate(NSDate *date)
     return ATLMDateProximityOther;
 }
 
-@interface ATLMConversationViewController () <ATLMConversationDetailViewControllerDelegate, ATLParticipantTableViewControllerDelegate>
+@interface ATLMConversationViewController () <ATLMConversationDetailViewControllerDelegate, ATLParticipantTableViewControllerDelegate, THComposeViewControllerDelegate>
 
 @property (nonatomic) ATLMParticipantDataSource *participantDataSource;
 
@@ -153,7 +153,7 @@ NSString *const ATLMDetailsButtonLabel = @"Details";
     [self configureUserInterfaceAttributes];
     [self registerNotificationObservers];
 
-    [self registerClass:[THMeemCell class] forMessageCellWithReuseIdentifier:@"MeemCell"];
+    [self registerClass:[THCardCell class] forMessageCellWithReuseIdentifier:@"MeemCell"];
     
     self.participantDataSource = [ATLMParticipantDataSource participantDataSourceWithPersistenceManager:self.applicationController.persistenceManager];
     self.participantDataSource.excludedIdentifiers = [NSSet setWithObject:self.layerClient.authenticatedUserID];
@@ -334,9 +334,31 @@ NSString *const ATLMDetailsButtonLabel = @"Details";
     return [[NSAttributedString alloc] initWithString:statusString attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:11]}];
 }
 
+- (BOOL)isMeemMessage:(LYRMessage *)message
+{
+    if ([message.parts count]) {
+        LYRMessagePart *messagePart = message.parts[0];
+        if ([messagePart.MIMEType isEqualToString:@"application/json"]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
 {
-    return @"MeemCell";
+    if ([self isMeemMessage:message]) {
+        return @"MeemCell";
+    }
+    return nil;
+}
+
+- (CGFloat)conversationViewController:(ATLConversationViewController *)viewController heightForMessage:(LYRMessage *)message withCellWidth:(CGFloat)cellWidth
+{
+    if ([self isMeemMessage:message]) {
+        return self.view.bounds.size.width;
+    }
+    return 0;
 }
 
 #pragma mark - ATLAddressBarControllerDelegate
@@ -441,6 +463,7 @@ NSString *const ATLMDetailsButtonLabel = @"Details";
     [self.navigationController pushViewController:detailViewController animated:YES];
     */
     THComposeViewController *composeViewController = [[THComposeViewController alloc] init];
+    composeViewController.delegate = self;
     [self.navigationController pushViewController:composeViewController animated:NO];
 }
 
@@ -526,6 +549,18 @@ NSString *const ATLMDetailsButtonLabel = @"Details";
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidTapLink:) name:ATLUserDidTapLinkNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(conversationMetadataDidChange:) name:ATLMConversationMetadataDidChangeNotification object:nil];
+}
+
+#pragma mark - THComposeViewControllerDelegate
+
+- (void)composeViewController:(THComposeViewController *)composeViewController didSendMeem:(NSDictionary *)meem
+{
+    NSData *json = [NSJSONSerialization dataWithJSONObject:meem options:NSJSONWritingPrettyPrinted error:nil];
+    
+    LYRMessagePart *messagePart = [LYRMessagePart messagePartWithMIMEType:@"application/json" data:json];
+    LYRMessage *message = [self.layerClient newMessageWithParts:@[messagePart] options:@{LYRMessageOptionsPushNotificationAlertKey: @"new meemchat yo"} error:nil];
+    NSError *error = nil;
+    [self.conversation sendMessage:message error:&error];
 }
 
 @end
