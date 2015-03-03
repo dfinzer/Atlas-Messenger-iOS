@@ -16,6 +16,7 @@
 		03EB7B471AA57D90005B318B /* THConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B461AA57D90005B318B /* THConstants.m */; };
 		03EB7B4B1AA57DAC005B318B /* THImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B4A1AA57DAC005B318B /* THImageUtils.m */; };
 		03EB7B501AA57DE1005B318B /* THOutlinedTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B4F1AA57DE1005B318B /* THOutlinedTextLabel.m */; };
+		03EB7B521AA58EF6005B318B /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03EB7B511AA58D8B005B318B /* impact.ttf */; };
 		0A0C242719477D8F00401B74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0C242619477D8F00401B74 /* Foundation.framework */; };
 		0A0C242919477D8F00401B74 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0C242819477D8F00401B74 /* CoreGraphics.framework */; };
 		0A0C242B19477D8F00401B74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0C242A19477D8F00401B74 /* UIKit.framework */; };
@@ -119,6 +120,7 @@
 		03EB7B4A1AA57DAC005B318B /* THImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THImageUtils.m; sourceTree = "<group>"; };
 		03EB7B4E1AA57DE1005B318B /* THOutlinedTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THOutlinedTextLabel.h; sourceTree = "<group>"; };
 		03EB7B4F1AA57DE1005B318B /* THOutlinedTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THOutlinedTextLabel.m; sourceTree = "<group>"; };
+		03EB7B511AA58D8B005B318B /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = impact.ttf; sourceTree = "<group>"; };
 		0A0C242319477D8F00401B74 /* Atlas Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Atlas Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A0C242619477D8F00401B74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0A0C242819477D8F00401B74 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -501,6 +503,7 @@
 		259A576B1950EB83000E27B0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				03EB7B511AA58D8B005B318B /* impact.ttf */,
 				D633684A1A9D614900FBFCD3 /* atlas-splashscreen-960.png */,
 				D633684B1A9D614900FBFCD3 /* atlas-splashscreen-1334.png */,
 				D633684C1A9D614900FBFCD3 /* atlas-splashscreen-1336.png */,
@@ -677,6 +680,7 @@
 				D62611691A98091800F6E707 /* layer-logo@2x.png in Resources */,
 				D62611711A98153C00F6E707 /* layer-logo-gray.png in Resources */,
 				D633684F1A9D614900FBFCD3 /* atlas-splashscreen-1334.png in Resources */,
+				03EB7B521AA58EF6005B318B /* impact.ttf in Resources */,
 				D62611721A98153C00F6E707 /* layer-logo-gray@3x.png in Resources */,
 				0ABEFFAF196B7686006FFFF3 /* logo@2x.png in Resources */,
 				D62D17371A9C267C00E0EFAF /* Launch Screen.xib in Resources */,

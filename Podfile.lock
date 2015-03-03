@@ -1,7 +1,10 @@
 PODS:
   - Atlas (1.0.0):
     - LayerKit
+  - Bolts (1.1.3)
   - Expecta (0.3.2)
+  - Facebook-iOS-SDK (3.23.0):
+    - Bolts (~> 1.0)
   - FLEX (1.1.1)
   - KIF (3.0.8):
     - KIF/XCTest (= 3.0.8)
@@ -10,8 +13,21 @@ PODS:
     - KIF (>= 2.0.0)
   - LayerKit (0.10.1)
   - LYRCountDownLatch (0.9.0)
-  - MBProgressHUD (0.9)
+  - MBProgressHUD (HEAD based on 0.9)
   - OCMock (3.1.2)
+  - Parse (1.6.3):
+    - Bolts (~> 1.1)
+  - ParseCrashReporting (1.6.3):
+    - Parse (~> 1.6.3)
+  - ParseFacebookUtils (1.6.3):
+    - Facebook-iOS-SDK (~> 3.20)
+    - Parse (~> 1.6.3)
+  - ParseUI (1.1.1):
+    - Parse (~> 1.6)
+    - ParseFacebookUtils (~> 1.6)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core (= 3.7.1)
+  - SDWebImage/Core (3.7.1)
   - SVProgressHUD (HEAD based on 1.1.2)
 
 DEPENDENCIES:
@@ -21,8 +37,13 @@ DEPENDENCIES:
   - KIF (~> 3.0.8)
   - KIFViewControllerActions (from `https://github.com/blakewatters/KIFViewControllerActions.git`)
   - LYRCountDownLatch (from `https://github.com/layerhq/LYRCountDownLatch.git`)
-  - MBProgressHUD (~> 0.8)
+  - MBProgressHUD (HEAD)
   - OCMock (~> 3.1)
+  - Parse
+  - ParseCrashReporting
+  - ParseFacebookUtils
+  - ParseUI
+  - SDWebImage (~> 3.6)
   - SVProgressHUD (HEAD)
 
 EXTERNAL SOURCES:
@@ -41,7 +62,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Atlas: 88ccc5306532efa2e9ac530b63e9117b019f5646
+  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Expecta: ee641011fe10aa1855d487b40e4976dac50ec342
+  Facebook-iOS-SDK: 3d65f685348b789e46a9aacf92bfa85b60b63755
   FLEX: 8e53751b915759215d77c7c72b1c7bd28665dac2
   KIF: 2db5e8cf59136dd1267d49cca0d55883389b09d3
   KIFViewControllerActions: 6d680038a329864d62526928dd89556c0177bc55
@@ -49,6 +72,11 @@ SPEC CHECKSUMS:
   LYRCountDownLatch: 2187adb9194b398e7f62b00da1e1fb42c22baaaf
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
+  Parse: f725f76ef200c5127420690fc6882e57c3813923
+  ParseCrashReporting: ad04b920f597c43a72629c08ecda63ef3525b084
+  ParseFacebookUtils: bb14e63862f920cc3f3864b0e373d6771b765255
+  ParseUI: f7e9e0e5271f75a19c74ead8fdd95d36160e268e
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
 
 COCOAPODS: 0.35.0

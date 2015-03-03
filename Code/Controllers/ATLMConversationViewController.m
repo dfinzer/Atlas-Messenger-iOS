@@ -26,6 +26,7 @@
 #import "ATLMParticipantTableViewController.h"
 
 #import "THMeemCell.h"
+#import "THComposeViewController.h"
 
 static NSDateFormatter *ATLMShortTimeFormatter()
 {
@@ -423,7 +424,7 @@ NSString *const ATLMDetailsButtonLabel = @"Details";
 {
     if (self.navigationItem.rightBarButtonItem) return;
 
-    UIBarButtonItem *detailsButtonItem = [[UIBarButtonItem alloc] initWithTitle:ATLMDetailsButtonLabel
+    UIBarButtonItem *detailsButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New Meem" //ATLMDetailsButtonLabel
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(detailsButtonTapped)];
@@ -433,10 +434,14 @@ NSString *const ATLMDetailsButtonLabel = @"Details";
 
 - (void)detailsButtonTapped
 {
+    /*
     ATLMConversationDetailViewController *detailViewController = [ATLMConversationDetailViewController conversationDetailViewControllerWithConversation:self.conversation];
     detailViewController.detailDelegate = self;
     detailViewController.applicationController = self.applicationController;
     [self.navigationController pushViewController:detailViewController animated:YES];
+    */
+    THComposeViewController *composeViewController = [[THComposeViewController alloc] init];
+    [self.navigationController pushViewController:composeViewController animated:NO];
 }
 
 #pragma mark - Notification Handlers
