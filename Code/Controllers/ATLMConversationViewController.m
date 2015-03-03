@@ -25,6 +25,8 @@
 #import "ATLMUtilities.h"
 #import "ATLMParticipantTableViewController.h"
 
+#import "THMeemCell.h"
+
 static NSDateFormatter *ATLMShortTimeFormatter()
 {
     static NSDateFormatter *dateFormatter;
@@ -149,6 +151,8 @@ NSString *const ATLMDetailsButtonLabel = @"Details";
     
     [self configureUserInterfaceAttributes];
     [self registerNotificationObservers];
+
+    [self registerClass:[THMeemCell class] forMessageCellWithReuseIdentifier:@"MeemCell"];
     
     self.participantDataSource = [ATLMParticipantDataSource participantDataSourceWithPersistenceManager:self.applicationController.persistenceManager];
     self.participantDataSource.excludedIdentifiers = [NSSet setWithObject:self.layerClient.authenticatedUserID];
@@ -327,6 +331,11 @@ NSString *const ATLMDetailsButtonLabel = @"Details";
         statusString = blockStatusString;
     }
     return [[NSAttributedString alloc] initWithString:statusString attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:11]}];
+}
+
+- (NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
+{
+    return @"MeemCell";
 }
 
 #pragma mark - ATLAddressBarControllerDelegate

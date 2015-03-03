@@ -2,8 +2,15 @@ platform :ios, '7.0'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Atlas Messenger' do
+  pod 'Parse'
+  pod 'ParseFacebookUtils'
+  pod 'ParseCrashReporting'
+  pod 'ParseUI'
   pod 'SVProgressHUD', :head
+  pod 'MBProgressHUD', :head
+  pod 'FLEX', '~> 1.1'
   pod 'Atlas', '~> 1.0.0'
+  pod 'SDWebImage', '~>3.6'
 end
 
 target 'Atlas MessengerTests' do

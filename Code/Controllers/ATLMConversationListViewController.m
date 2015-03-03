@@ -60,7 +60,7 @@ NSString *const ATLMComposeButtonAccessibilityLabel = @"Compose Button";
     [self.navigationItem setRightBarButtonItem:composeButton];
     
     self.participantDataSource = [ATLMParticipantDataSource participantDataSourceWithPersistenceManager:self.applicationController.persistenceManager];
-    
+        
     [self registerNotificationObservers];
 }
 
