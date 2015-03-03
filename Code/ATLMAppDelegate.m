@@ -23,6 +23,11 @@
 #import <MessageUI/MessageUI.h>
 #import <sys/sysctl.h>
 #import <asl.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
+#import <ParseCrashReporting/ParseCrashReporting.h>
+#import <PFFacebookUtils.h>
 
 #import "ATLMAppDelegate.h"
 #import "ATLMNavigationController.h"
@@ -32,6 +37,8 @@
 #import "SVProgressHUD.h"
 #import "ATLMQRScannerController.h"
 #import "ATLMUtilities.h"
+#import "THMainViewController.h"
+#import "THContactsManager.h"
 
 // TODO: Configure a Layer appID from https://developer.layer.com/dashboard/atlas/build
 static NSString *const ATLMLayerAppID = @"d62529ee-c144-11e4-ae61-d66a000006ca";
@@ -39,6 +46,7 @@ static NSString *const ATLMLayerAppID = @"d62529ee-c144-11e4-ae61-d66a000006ca";
 @interface ATLMAppDelegate () <MFMailComposeViewControllerDelegate>
 
 @property (nonatomic) ATLMQRScannerController *scannerController;
+@property (nonatomic) THMainViewController *mainController;
 @property (nonatomic) UINavigationController *navigationController;
 @property (nonatomic) ATLMConversationListViewController *conversationListViewController;
 @property (nonatomic) ATLMSplashView *splashView;
@@ -51,6 +59,16 @@ static NSString *const ATLMLayerAppID = @"d62529ee-c144-11e4-ae61-d66a000006ca";
 {
     self.applicationController = [ATLMApplicationController controllerWithPersistenceManager:[ATLMPersistenceManager defaultManager]];
     
+    // Set up Parse.
+    [ParseCrashReporting enable];
+    [Parse setApplicationId:@"1w4eSQsXYrjiLaod5fpqTUTDtBztS2C5YW7hDfjn" clientKey:@"yWV9cqnV74SvvGMbQyviGYJpwl9kHnG5EvOpMRve"];
+    
+    // Initialize Facebook.
+    [PFFacebookUtils initializeFacebook];
+    
+    // Logs 'install' and 'app activate' App Events.
+    [FBAppEvents activateApp];
+    
     // Set up window
     [self configureWindow];
     
@@ -62,6 +80,9 @@ static NSString *const ATLMLayerAppID = @"d62529ee-c144-11e4-ae61-d66a000006ca";
     
     // Setup notifications
     [self registerNotificationObservers];
+    
+    // Load contacts.
+    //[[THContactsManager instance] l
     
     return YES;
 }
@@ -84,7 +105,10 @@ static NSString *const ATLMLayerAppID = @"d62529ee-c144-11e4-ae61-d66a000006ca";
     self.scannerController = [ATLMQRScannerController new];
     self.scannerController.applicationController = self.applicationController;
     
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.scannerController];
+    self.mainController = [[THMainViewController alloc] init];
+    self.mainController.applicationController = self.applicationController;
+    
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.mainController];
     self.navigationController.navigationBarHidden = YES;
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -128,8 +152,7 @@ static NSString *const ATLMLayerAppID = @"d62529ee-c144-11e4-ae61-d66a000006ca";
 - (BOOL)resumeSession
 {
     if (self.applicationController.layerClient.authenticatedUserID) {
-        ATLMSession *session = [self.applicationController.persistenceManager persistedSessionWithError:nil];
-        if ([self.applicationController.APIManager resumeSession:session error:nil]) {
+        if ([[PFUser currentUser] isAuthenticated]) {
             [self presentConversationsListViewController:YES];
             return YES;
         }
@@ -212,9 +235,16 @@ static NSString *const ATLMLayerAppID = @"d62529ee-c144-11e4-ae61-d66a000006ca";
     }
 }
 
--(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return YES;
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    BOOL wasHandled = false;
+    
+    if ([PFFacebookUtils session]) {
+        wasHandled |= [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
+    } else {
+        wasHandled |= [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    }
+    
+    return wasHandled;
 }
 
 - (LYRConversation *)conversationFromRemoteNotification:(NSDictionary *)remoteNotification

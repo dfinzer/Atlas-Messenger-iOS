@@ -449,19 +449,21 @@ NSString *const ATLMDetailsButtonLabel = @"Details";
     UIBarButtonItem *detailsButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New Meem" //ATLMDetailsButtonLabel
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
-                                                                         action:@selector(detailsButtonTapped)];
+                                                                         action:@selector(newMeemButtonTapped)];
     detailsButtonItem.accessibilityLabel = ATLMDetailsButtonAccessibilityLabel;
     self.navigationItem.rightBarButtonItem = detailsButtonItem;
 }
 
 - (void)detailsButtonTapped
 {
-    /*
     ATLMConversationDetailViewController *detailViewController = [ATLMConversationDetailViewController conversationDetailViewControllerWithConversation:self.conversation];
     detailViewController.detailDelegate = self;
     detailViewController.applicationController = self.applicationController;
     [self.navigationController pushViewController:detailViewController animated:YES];
-    */
+}
+
+- (void)newMeemButtonTapped
+{
     THComposeViewController *composeViewController = [[THComposeViewController alloc] init];
     composeViewController.delegate = self;
     [self.navigationController pushViewController:composeViewController animated:NO];

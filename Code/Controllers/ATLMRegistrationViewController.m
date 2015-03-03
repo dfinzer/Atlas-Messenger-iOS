@@ -15,6 +15,8 @@
 #import "ATLMUtilities.h"
 #import "SVProgressHUD.h"
 
+#import <Parse/Parse.h>
+
 @interface ATLMRegistrationViewController () <UITextFieldDelegate>
 
 @property (nonatomic) ATLLogoView *logoView;
@@ -81,7 +83,7 @@ CGFloat const ATLMregistrationTextFieldBottomPadding = 20;
     return YES;
 }
 
-- (void)registerAndAuthenticateUserWithName:(NSString *)name
+- (void)registerAndAuthenticateUserWithNameOld:(NSString *)name
 {
     [self.view endEditing:YES];
     
@@ -120,6 +122,39 @@ CGFloat const ATLMregistrationTextFieldBottomPadding = 20;
                 [SVProgressHUD showSuccessWithStatus:@"Authenticated!"];
             }];
         }];
+    }];
+}
+
+- (void)registerAndAuthenticateUserWithName:(NSString *)name
+{
+    [self.applicationController.layerClient requestAuthenticationNonceWithCompletion:^(NSString *nonce, NSError *error) {
+        NSLog(@"Authentication nonce %@", nonce);
+        
+        // Upon reciept of nonce, post to your backend and acquire a Layer identityToken
+        if (nonce) {
+            PFUser *user = [PFUser currentUser];
+            NSString *userID  = user.objectId;
+            [PFCloud callFunctionInBackground:@"generateToken"
+                               withParameters:@{@"nonce" : nonce,
+                                                @"userID" : userID}
+                                        block:^(NSString *token, NSError *error) {
+                                            if (!error) {
+                                                // Send the Identity Token to Layer to authenticate the user
+                                                [self.applicationController.layerClient authenticateWithIdentityToken:token completion:^(NSString *authenticatedUserID, NSError *error) {
+                                                    if (!error) {
+                                                        [[PFUser currentUser] setObject:self.applicationController.layerClient.authenticatedUserID forKey:@"layerId"];
+                                                        
+                                                        NSLog(@"Parse User authenticated with Layer Identity Token");
+                                                    } else{
+                                                        NSLog(@"Parse User failed to authenticate with token with error: %@", error);
+                                                    }
+                                                }];
+                                            }
+                                            else{
+                                                NSLog(@"Parse Cloud function failed to be called to generate token with error: %@", error);
+                                            }
+                                        }];
+        }
     }];
 }
 

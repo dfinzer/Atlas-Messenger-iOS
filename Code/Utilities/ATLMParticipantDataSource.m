@@ -19,6 +19,7 @@
 //
 
 #import "ATLMParticipantDataSource.h"
+#import "THContactsManager.h"
 
 @interface ATLMParticipantDataSource ()
 
@@ -68,6 +69,12 @@
 
 - (NSSet *)participants
 {
+    NSArray *contacts = [[THContactsManager instance] userContacts];
+    NSMutableSet *participants = [NSMutableSet set];
+    for (PFUser *contact in contacts) {
+        
+    }
+    
     NSMutableSet *participants = [[self.persistenceManager persistedUsersWithError:nil] mutableCopy];
     NSSet *participantsToExclude = [self.persistenceManager usersForIdentifiers:self.excludedIdentifiers];
     [participants minusSet:participantsToExclude];

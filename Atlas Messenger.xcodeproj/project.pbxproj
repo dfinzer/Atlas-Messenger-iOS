@@ -17,6 +17,11 @@
 		03EB7B4B1AA57DAC005B318B /* THImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B4A1AA57DAC005B318B /* THImageUtils.m */; };
 		03EB7B501AA57DE1005B318B /* THOutlinedTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B4F1AA57DE1005B318B /* THOutlinedTextLabel.m */; };
 		03EB7B521AA58EF6005B318B /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03EB7B511AA58D8B005B318B /* impact.ttf */; };
+		03EB7B551AA655B9005B318B /* THMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B541AA655B9005B318B /* THMainViewController.m */; };
+		03EB7B581AA657B7005B318B /* THFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B571AA657B7005B318B /* THFacebookUtils.m */; };
+		03EB7B5B1AA657CD005B318B /* THLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B5A1AA657CD005B318B /* THLogInViewController.m */; };
+		03EB7B5F1AA664CE005B318B /* THContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B5E1AA664CE005B318B /* THContactsManager.m */; };
+		03EB7B631AA66538005B318B /* THContactUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 03EB7B621AA66538005B318B /* THContactUtils.m */; };
 		0A0C242719477D8F00401B74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0C242619477D8F00401B74 /* Foundation.framework */; };
 		0A0C242919477D8F00401B74 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0C242819477D8F00401B74 /* CoreGraphics.framework */; };
 		0A0C242B19477D8F00401B74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A0C242A19477D8F00401B74 /* UIKit.framework */; };
@@ -121,6 +126,16 @@
 		03EB7B4E1AA57DE1005B318B /* THOutlinedTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THOutlinedTextLabel.h; sourceTree = "<group>"; };
 		03EB7B4F1AA57DE1005B318B /* THOutlinedTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THOutlinedTextLabel.m; sourceTree = "<group>"; };
 		03EB7B511AA58D8B005B318B /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = impact.ttf; sourceTree = "<group>"; };
+		03EB7B531AA655B9005B318B /* THMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THMainViewController.h; sourceTree = "<group>"; };
+		03EB7B541AA655B9005B318B /* THMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THMainViewController.m; sourceTree = "<group>"; };
+		03EB7B561AA657B7005B318B /* THFacebookUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THFacebookUtils.h; sourceTree = "<group>"; };
+		03EB7B571AA657B7005B318B /* THFacebookUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THFacebookUtils.m; sourceTree = "<group>"; };
+		03EB7B591AA657CD005B318B /* THLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THLogInViewController.h; sourceTree = "<group>"; };
+		03EB7B5A1AA657CD005B318B /* THLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THLogInViewController.m; sourceTree = "<group>"; };
+		03EB7B5D1AA664CE005B318B /* THContactsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactsManager.h; sourceTree = "<group>"; };
+		03EB7B5E1AA664CE005B318B /* THContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactsManager.m; sourceTree = "<group>"; };
+		03EB7B611AA66538005B318B /* THContactUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THContactUtils.h; sourceTree = "<group>"; };
+		03EB7B621AA66538005B318B /* THContactUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THContactUtils.m; sourceTree = "<group>"; };
 		0A0C242319477D8F00401B74 /* Atlas Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Atlas Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A0C242619477D8F00401B74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0A0C242819477D8F00401B74 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -278,8 +293,12 @@
 		03EB7B2A1AA57B40005B318B /* Meemchat */ = {
 			isa = PBXGroup;
 			children = (
+				03EB7B531AA655B9005B318B /* THMainViewController.h */,
+				03EB7B541AA655B9005B318B /* THMainViewController.m */,
 				03EB7B3F1AA57D18005B318B /* THComposeViewController.h */,
 				03EB7B401AA57D18005B318B /* THComposeViewController.m */,
+				03EB7B591AA657CD005B318B /* THLogInViewController.h */,
+				03EB7B5A1AA657CD005B318B /* THLogInViewController.m */,
 			);
 			name = Meemchat;
 			sourceTree = "<group>";
@@ -310,6 +329,10 @@
 		03EB7B4C1AA57DBB005B318B /* Meemchat */ = {
 			isa = PBXGroup;
 			children = (
+				03EB7B611AA66538005B318B /* THContactUtils.h */,
+				03EB7B621AA66538005B318B /* THContactUtils.m */,
+				03EB7B561AA657B7005B318B /* THFacebookUtils.h */,
+				03EB7B571AA657B7005B318B /* THFacebookUtils.m */,
 				03EB7B491AA57DAC005B318B /* THImageUtils.h */,
 				03EB7B4A1AA57DAC005B318B /* THImageUtils.m */,
 				03EB7B481AA57D9A005B318B /* THDefines.h */,
@@ -326,6 +349,23 @@
 				03EB7B4F1AA57DE1005B318B /* THOutlinedTextLabel.m */,
 			);
 			name = Labels;
+			sourceTree = "<group>";
+		};
+		03EB7B5C1AA664C7005B318B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				03EB7B601AA66529005B318B /* Meemchat */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		03EB7B601AA66529005B318B /* Meemchat */ = {
+			isa = PBXGroup;
+			children = (
+				03EB7B5D1AA664CE005B318B /* THContactsManager.h */,
+				03EB7B5E1AA664CE005B318B /* THContactsManager.m */,
+			);
+			name = Meemchat;
 			sourceTree = "<group>";
 		};
 		0A0C241A19477D8F00401B74 = {
@@ -487,6 +527,7 @@
 		259A57111950EB76000E27B0 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				03EB7B5C1AA664C7005B318B /* Managers */,
 				03EB7B321AA57CEA005B318B /* Categories */,
 				251D8D841A9688C40000BFA2 /* ATLMAppDelegate.h */,
 				251D8D851A9688C40000BFA2 /* ATLMAppDelegate.m */,
@@ -773,9 +814,12 @@
 				03EB7B3E1AA57D0A005B318B /* THCardView.m in Sources */,
 				251D8DC21A9688C50000BFA2 /* ATLMApplicationController.m in Sources */,
 				251D8DCA1A9688C50000BFA2 /* ATLMSettingsViewController.m in Sources */,
+				03EB7B5F1AA664CE005B318B /* THContactsManager.m in Sources */,
+				03EB7B581AA657B7005B318B /* THFacebookUtils.m in Sources */,
 				251D8DD21A9688C50000BFA2 /* ATLMLayerClient.m in Sources */,
 				03EB7B291AA57313005B318B /* THCardCell.m in Sources */,
 				251D8DCE1A9688C50000BFA2 /* ATLMUser.m in Sources */,
+				03EB7B551AA655B9005B318B /* THMainViewController.m in Sources */,
 				251D8DCC1A9688C50000BFA2 /* ATLMRegistrationViewController.m in Sources */,
 				251D8DC31A9688C50000BFA2 /* ATLMConversationDetailViewController.m in Sources */,
 				03EB7B3B1AA57CFB005B318B /* UIButton+THAdditions.m in Sources */,
@@ -795,7 +839,9 @@
 				251D8DC81A9688C50000BFA2 /* ATLMParticipantTableViewController.m in Sources */,
 				251D8DC41A9688C50000BFA2 /* ATLMConversationListViewController.m in Sources */,
 				251D8DD81A9688C50000BFA2 /* ATLMSettingsHeaderView.m in Sources */,
+				03EB7B5B1AA657CD005B318B /* THLogInViewController.m in Sources */,
 				251D8DD41A9688C50000BFA2 /* ATLMUtilities.m in Sources */,
+				03EB7B631AA66538005B318B /* THContactUtils.m in Sources */,
 				251D8DD01A9688C50000BFA2 /* ATLMErrors.m in Sources */,
 				251D8DCB1A9688C50000BFA2 /* ATLMQRScannerController.m in Sources */,
 				251D8DC91A9688C50000BFA2 /* ATLMPersistenceManager.m in Sources */,
